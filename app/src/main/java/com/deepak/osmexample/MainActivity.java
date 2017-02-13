@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         setContentView(R.layout.activity_main);
 
         button1 = (Button) findViewById(R.id.button1);
+        buttonToMoveMapToCurrentLoc = (Button) findViewById(R.id.buttonToMoveMapTocurrentLoc);
 
         arrayListForRoadPoints = new ArrayList<>();
 
@@ -114,7 +115,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
 
             markerForCurrentLocation = new Marker(mapView);
             markerForCurrentLocation.setAnchor(org.osmdroid.views.overlay.Marker.ANCHOR_CENTER, org.osmdroid.views.overlay.Marker.ANCHOR_BOTTOM);
-            markerForCurrentLocation.setIcon(getResources().getDrawable(R.drawable.green, null));
+            markerForCurrentLocation.setIcon(getResources().getDrawable(R.drawable.blue, null));
             markerForCurrentLocation.setSnippet(CURRENT_LOCATION);
 
             locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
@@ -197,13 +198,13 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         @Override
         protected void onPreExecute() {
             //super.onPreExecute();
-            progressDialog = new ProgressDialog(context);
+            /*progressDialog = new ProgressDialog(context);
             progressDialog.setTitle("YOUR NAVIGATION");
             progressDialog.setMessage("is downloading");
             progressDialog.show();
             if (mapView.getOverlays().contains(polylineRoadOverlay)) {
                 mapView.getOverlays().remove(polylineRoadOverlay);
-            }
+            }*/
         }
 
         //Road road;
@@ -258,7 +259,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            progressDialog.dismiss();
+            //progressDialog.dismiss();
             if (arrayListForRoadPoints.size() > 0) {
                 mapView.getOverlays().add(polylineRoadOverlay);
             }
